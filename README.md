@@ -1,11 +1,14 @@
-# Notes App NodeMongo
+# Sistema de Clientes usando NodeMongo
 
-This is a basic App to manage simple Notes on the web using Javascript Technologies like Nodejs, Mongodb, and other related technologies.
+Esta es una aplicacion sencilla para llevar el alta de clientes.
 
-This app can do:
+Esta app puede hacer:
 
-- CRUD Operations: create/read/update/delete Notes
-- Allows a user to do login and save his personal notes
+- CRUD Operaciones: crear/Read/Update/Delete Clientes
+- Permite que el usuario accese a travez de un login y 
+guarde su configuracion personal. Ademas tiene accesos por usuario
+y permite asignar Tokes por sesion. El administrador puede cambiar
+el tiempo de expiracion del Token.
 
 # Screenshot
 
@@ -13,11 +16,13 @@ This app can do:
 
 # Environment Variables
 
-This app needs the following environment Variables
+Esta app necesita de las siguientes variables de entorno:
 
 - `MONGODB_HOST` this is the Mongodb URI string
 - `MONGODB_DATABASE` Mongodb database name
 - `NODE_ENV` node environment
+
+** Es necesario tener instalado y configurado MONGODB de forma local
 
 # Docker
 
@@ -30,20 +35,11 @@ docker-compose up
 
 ## Default User
 
-when the app is lauched, this will create an Admin user with the following credentials:
+Cuando se corre por primera vez la aplicacion se crea el usuario Admin 
+con las siguientes credenciales (las claves estan encriptadas):
 
 - email: admin@localhost
 - password: adminpassword
 
-# Recursos
-
-- [Materia Bootswatch](https://www.bootstrapcdn.com/bootswatch/)
-- [CSS Background uiGradients](https://uigradients.com/#Dull)
-
-# Tutorial
-
-This app was created with educational purposes, so you can found the tutorials in the following links:
-
-- [Version 2](https://www.youtube.com/playlist?list=PLo5lAe9kQrwqUEXK7oQbzv63KsdODzuAy), new tutorial made in 2020
-  and these are old tutorials about this app
-- [Version 1.0.0](https://youtu.be/-bI0diefasA)
+"# ciso2020" 
+"# appClientes" 
