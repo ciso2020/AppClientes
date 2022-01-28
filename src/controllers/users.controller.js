@@ -3,6 +3,8 @@ import passport from "passport";
 
 export const renderSignUpForm = (req, res) => res.render("users/signup");
 
+export const jwt = require('jsonwebtoken');
+
 export const singup = async (req, res) => {
   let errors = [];
   const { name, email, password, confirm_password } = req.body;

@@ -8,31 +8,41 @@ import passport from "passport";
 import morgan from "morgan";
 import MongoStore from "connect-mongo";
 
+const Handlebars = require('handlebars');
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
+
 import { createAdminUser } from "./libs/createUser";
+import { createTokenTime } from "./libs/createTokenTime";
 import config from "./config";
 
 import indexRoutes from "./routes/index.routes";
 import notesRoutes from "./routes/notes.routes";
 import userRoutes from "./routes/users.routes";
+import tokentimerouters from "./routes/tokentime.routers";
 import "./config/passport";
 
 // Initializations
 const app = express();
+app.use(express.json());
+
 createAdminUser();
+createTokenTime();
 
 // settings
 app.set("port", config.PORT);
 app.set("views", path.join(__dirname, "views"));
-app.engine(
-  ".hbs",
+app.set("view engine", ".hbs");
+
+app.engine(".hbs",
   exphbs({
     defaultLayout: "main",
     layoutsDir: path.join(app.get("views"), "layouts"),
     partialsDir: path.join(app.get("views"), "partials"),
     extname: ".hbs",
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
   })
 );
-app.set("view engine", ".hbs");
+
 
 // middlewares
 app.use(morgan("dev"));
@@ -59,10 +69,12 @@ app.use((req, res, next) => {
   next();
 });
 
+
 // routes
 app.use(indexRoutes);
 app.use(userRoutes);
 app.use(notesRoutes);
+app.use(tokentimerouters);
 
 // static files
 app.use(express.static(path.join(__dirname, "public")));

@@ -8,6 +8,7 @@ export const createAdminUser = async () => {
   const newUser = new User({
     username: "admin",
     email: "admin@localhost",
+    tipouser: true
   });
 
   newUser.password = await newUser.encryptPassword("adminpassword");
